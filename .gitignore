@@ -6,15 +6,11 @@ dist
 /src/generated/prisma
 .agents/
 .claude/
-.env.example
 .postman/
 .windsurf/
-eslint.config.mjs
 node_modules/
-postman/
-prisma/
-prisma7.config.ts
+prisma/migrations
 skills-lock.json
-tsconfig.json
+
 
 

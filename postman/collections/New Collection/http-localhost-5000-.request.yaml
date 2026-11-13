@@ -1,0 +1,15 @@
+$kind: http-request
+name: http://localhost:5000/
+description: ""
+url: http://localhost:5000/api/v1/specialties
+method: POST
+body:
+  type: json
+  content: "{\r\n    \"title\":\"Neorology\"\r\n}"
+settings:
+  protocolVersion: auto
+  strictSSL: false
+  followRedirects: true
+  disableCookies: false
+  maxResponseSize: 52428800
+order: 1000

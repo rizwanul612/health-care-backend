@@ -1,0 +1,43 @@
+model Doctor{
+    id String @id @default(uuid(7))
+    name String
+    email String @unique
+    profilePhoto String?
+    contactNumber String?
+    address String?
+    isDeleted Boolean @default(false)
+    deletedAt DateTime?
+    registrationNumber String @unique
+    experiance Int @default(0)
+    gender Gender
+    appointmentFee Float
+    qualification String
+    currentWorkingPlace String
+    designation String
+    avarageRating Float @default(0.0)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    doctorSpecialty DoctorSpecialty[]
+    userId String @unique
+    user User @relation(fields:[userId],references: [id],onDelete: Cascade,onUpdate: Cascade)
+    // if user updated then patient update automatecally
+     //one to one relation of user and docror
+    @@index([email],name:"doctor_email")
+    @@index([isDeleted],name:"doctor_isDeleted")
+    @@map("doctor")
+}
+//doctor & specality many to many relation so,create new doctorSpecialty,
+// doctor to doctorSpecilty is one to many & specialty to doctorspacilty is 1 to many
+model DoctorSpecialty{
+    id String @id @default(uuid(7))
+    doctorId String
+    specialtyId String
+
+    doctor Doctor @relation(fields: [doctorId], references: [id],onDelete:Cascade, onUpdate:Cascade )
+    specialty Specialty @relation(fields: [specialtyId], references: [id],onDelete:Cascade, onUpdate:Cascade )
+    @@unique([doctorId,specialtyId])
+//    jdi speciality delete kore dy tahole doctor specility delete hobe
+    @@index([doctorId],name:"doctorsprcialty_doctorId")
+    @@index([specialtyId],name:"doctorsprcialty_specialtyId")
+    @@map("doctorspecialty")
+}
