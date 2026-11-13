@@ -7,7 +7,7 @@ dist
 .agents/
 .claude/
 .postman/
-postman
+postman/
 .windsurf/
 node_modules/
 prisma/migrations
